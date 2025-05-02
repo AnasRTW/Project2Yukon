@@ -1,0 +1,69 @@
+// Step 1: Backup Variables
+Node* backupHead = NULL;
+Node* backupSecondHead = NULL;
+Node* backupThirdHead = NULL;
+Node* backupFourthHead = NULL;
+Node* backupFifthHead = NULL;
+Node* backupSixthHead = NULL;
+Node* backupSeventhHead = NULL;
+Node* backupFone = NULL;
+Node* backupFtwo = NULL;
+Node* backupFthree = NULL;
+Node* backupFfour = NULL;
+
+// Step 2: Funktion til at gwmme
+void backupGameState() {
+    ClearList(&backupHead);
+    ClearList(&backupSecondHead);
+    ClearList(&backupThirdHead);
+    ClearList(&backupFourthHead);
+    ClearList(&backupFifthHead);
+    ClearList(&backupSixthHead);
+    ClearList(&backupSeventhHead);
+    ClearList(&backupFone);
+    ClearList(&backupFtwo);
+    ClearList(&backupFthree);
+    ClearList(&backupFfour);
+
+    backupHead = saveDeck(head);
+    backupSecondHead = saveDeck(SecondHead);
+    backupThirdHead = saveDeck(ThirdHead);
+    backupFourthHead = saveDeck(FourthHead);
+    backupFifthHead = saveDeck(FifthHead);
+    backupSixthHead = saveDeck(SixthHead);
+    backupSeventhHead = saveDeck(SeventhHead);
+    backupFone = saveDeck(Fone);
+    backupFtwo = saveDeck(Ftwo);
+    backupFthree = saveDeck(Fthree);
+    backupFfour = saveDeck(Ffour);
+}
+
+// Step 3: Funkton til at undo
+void undoGameState() {
+    ClearList(&head);
+    ClearList(&SecondHead);
+    ClearList(&ThirdHead);
+    ClearList(&FourthHead);
+    ClearList(&FifthHead);
+    ClearList(&SixthHead);
+    ClearList(&SeventhHead);
+    ClearList(&Fone);
+    ClearList(&Ftwo);
+    ClearList(&Fthree);
+    ClearList(&Ffour);
+
+    head = saveDeck(backupHead);
+    SecondHead = saveDeck(backupSecondHead);
+    ThirdHead = saveDeck(backupThirdHead);
+    FourthHead = saveDeck(backupFourthHead);
+    FifthHead = saveDeck(backupFifthHead);
+    SixthHead = saveDeck(backupSixthHead);
+    SeventhHead = saveDeck(backupSeventhHead);
+    Fone = saveDeck(backupFone);
+    Ftwo = saveDeck(backupFtwo);
+    Fthree = saveDeck(backupFthree);
+    Ffour = saveDeck(backupFfour);
+
+    GameMovesPrint();
+    printf("LAST Command: U\nMessage: Undo successful\nINPUT >");
+}
